@@ -1,0 +1,312 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+}
+
+.titulo {
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+  position: relative;
+  transition: transform 0.2s ease;
+  border: 1px solid #eee;
+
+  max-width: 240px; /* 💡 Limita a largura */
+  min-height: 370px; /* 💡 Aumenta a altura visual */
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.desconto {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #6a5e42;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.imagem {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nome {
+  font-size: 1.05rem; /* antes: 0.95rem */
+  font-weight: 600;   /* um pouco mais forte */
+  margin-bottom: 0.6rem;
+  color: black;
+}
+
+.precos {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.precoOriginal {
+  text-decoration: line-through;
+  font-size: 0.95rem; /* antes: 0.85rem */
+  color: #888;
+}
+
+.preco {
+  font-size: 1.25rem; /* antes: 1.1rem */
+  font-weight: bold;
+  color: #67C453;
+}
+
+.parcela {
+  font-size: 0.95rem; /* antes: 0.85rem */
+  color: #555;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 colunas fixas */
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Modal overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Caixa do modal */
+.modal {
+  background: #fff;
+  padding: 2.5rem; /* aumentei o padding */
+  border-radius: 12px;
+  width: 90%;
+  max-width: 520px; /* levemente maior */
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+  font-size: 1.15rem; /* aumenta base geral */
+}
+
+.modal img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem; /* mais espaçamento */
+}
+
+.precoModal {
+  font-size: 1.5rem; /* antes: 1.2rem */
+  font-weight: bold;
+  color: #67C453;
+  margin-top: 0.8rem;
+}
+
+.parcelaModal {
+  font-size: 1.1rem; /* antes: 0.9rem */
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.botaoWhatsApp {
+  display: inline-block;
+  background: #25d366;
+  color: white;
+  padding: 1rem 2rem; /* botão maior */
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem; /* texto maior */
+  margin-top: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.linhaSeparadora {
+  height: 2px;
+  background-color: #6a5e42; 
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 4px;
+}
+
+.botaoWhatsAppCard {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #25d366;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.botaoWhatsAppCard:hover {
+  background: #1ebe5d;
+}
+
+/* ----------------- RESPONSIVO ----------------- */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    min-height: 340px;
+    max-width: 220px;
+  }
+
+  .modal {
+    font-size: 1.05rem;
+    padding: 2rem;
+  }
+
+  .botaoWhatsApp {
+    font-size: 1rem;
+    padding: 0.9rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    max-width: 100%;
+    min-height: 330px;
+  }
+
+  .titulo {
+    font-size: 1.6rem;
+  }
+
+  .preco {
+    font-size: 1.15rem;
+  }
+
+  .parcela,
+  .precoOriginal {
+    font-size: 0.85rem;
+  }
+
+  .modal {
+    font-size: 1rem;
+    padding: 1.8rem;
+  }
+
+  .precoModal {
+    font-size: 1.3rem;
+  }
+
+  .parcelaModal {
+    font-size: 1rem;
+  }
+
+  .botaoWhatsApp {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 1.2rem;
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 0.8rem;
+    min-height: 320px;
+  }
+
+  .imagem {
+    max-height: 120px;
+  }
+
+  .nome {
+    font-size: 1rem;
+  }
+
+  .preco {
+    font-size: 1.1rem;
+  }
+
+  .precoOriginal,
+  .parcela {
+    font-size: 0.8rem;
+  }
+
+  .modal {
+    font-size: 0.95rem;
+    padding: 1.5rem;
+  }
+
+  .precoModal {
+    font-size: 1.2rem;
+  }
+
+  .parcelaModal {
+    font-size: 0.95rem;
+  }
+
+  .botaoWhatsApp {
+    font-size: 1rem;
+    padding: 0.7rem 1.4rem;
+  }
+}
