@@ -1,0 +1,13 @@
+body {
+  font-family: 'MinhaFonte', sans-serif;
+}
+
+/* Reset básico para remover margens e paddings */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ajuda a controlar tamanho */
+  background: #fff; /* ou a cor que quiser para o fundo */
+  width: 100%;
+  height: 100%;
+}

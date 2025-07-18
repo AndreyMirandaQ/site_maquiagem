@@ -12,8 +12,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  justify-items: center;
 }
 
 .card {
@@ -24,9 +25,8 @@
   position: relative;
   transition: transform 0.2s ease;
   border: 1px solid #eee;
-
-  max-width: 240px; /* 💡 Limita a largura */
-  min-height: 370px; /* 💡 Aumenta a altura visual */
+  max-width: 240px;
+  min-height: 370px;
 }
 
 .card:hover {
@@ -39,7 +39,7 @@
   left: 10px;
   background: #6a5e42;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
   padding: 4px 8px;
   border-radius: 8px;
@@ -61,10 +61,10 @@
 }
 
 .nome {
-  font-size: 1.05rem; /* antes: 0.95rem */
-  font-weight: 600;   /* um pouco mais forte */
+  font-size: 1.15rem;
+  font-weight: 600;
   margin-bottom: 0.6rem;
-  color: black;
+  color: rgb(53, 46, 46);
 }
 
 .precos {
@@ -76,70 +76,92 @@
 
 .precoOriginal {
   text-decoration: line-through;
-  font-size: 0.95rem; /* antes: 0.85rem */
+  font-size: 1.05rem;
   color: #888;
 }
 
 .preco {
-  font-size: 1.25rem; /* antes: 1.1rem */
+  font-size: 1.35rem;
   font-weight: bold;
   color: #67C453;
 }
 
 .parcela {
-  font-size: 0.95rem; /* antes: 0.85rem */
+  font-size: 1.05rem;
   color: #555;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 colunas fixas */
-  gap: 1.5rem;
-  justify-items: center;
-}
+/* ---------------- MODAL ATUALIZADO ---------------- */
 
-/* Modal overlay */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: hidden;
 }
 
-/* Caixa do modal */
 .modal {
   background: #fff;
-  padding: 2.5rem; /* aumentei o padding */
+  padding: 2.5rem;
   border-radius: 12px;
-  width: 90%;
-  max-width: 520px; /* levemente maior */
+  width: 520px;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
   text-align: center;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
-  font-size: 1.15rem; /* aumenta base geral */
+  font-size: 1.15rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .modal img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 1.5rem; /* mais espaçamento */
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+
+.fecharModal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.fecharModal:hover {
+  color: #67C453;
 }
 
 .precoModal {
-  font-size: 1.5rem; /* antes: 1.2rem */
+  font-size: 1.5rem;
   font-weight: bold;
   color: #67C453;
   margin-top: 0.8rem;
 }
 
 .parcelaModal {
-  font-size: 1.1rem; /* antes: 0.9rem */
+  font-size: 1.1rem;
   color: #555;
   margin-bottom: 1.2rem;
 }
@@ -148,12 +170,12 @@
   display: inline-block;
   background: #25d366;
   color: white;
-  padding: 1rem 2rem; /* botão maior */
+  padding: 1rem 2rem;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem; /* texto maior */
-  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  margin-top: auto;
 }
 
 @keyframes fadeIn {
@@ -169,7 +191,7 @@
 
 .linhaSeparadora {
   height: 2px;
-  background-color: #6a5e42; 
+  background-color: #6a5e42;
   width: 100%;
   margin: 0.5rem 0 1rem 0;
   border-radius: 4px;
@@ -207,6 +229,9 @@
   .modal {
     font-size: 1.05rem;
     padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
   }
 
   .botaoWhatsApp {
@@ -230,17 +255,23 @@
   }
 
   .preco {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 
-  .parcela,
   .precoOriginal {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
+  }
+
+  .parcela {
+    font-size: 0.95rem;
   }
 
   .modal {
     font-size: 1rem;
     padding: 1.8rem;
+    width: 90%;
+    max-width: 360px;
+    max-height: 75vh;
   }
 
   .precoModal {
@@ -280,21 +311,27 @@
   }
 
   .nome {
-    font-size: 1rem;
-  }
-
-  .preco {
     font-size: 1.1rem;
   }
 
-  .precoOriginal,
+  .preco {
+    font-size: 1.4rem;
+  }
+
+  .precoOriginal {
+    font-size: 1.15rem;
+  }
+
   .parcela {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .modal {
     font-size: 0.95rem;
     padding: 1.5rem;
+    width: 90%;
+    max-width: 320px;
+    max-height: 70vh;
   }
 
   .precoModal {
