@@ -107,7 +107,6 @@
 
 .banner {
   width: 100%;
-  max-height: 600px;
   overflow: hidden;
 }
 
@@ -118,8 +117,16 @@
   object-fit: cover;
 }
 
-/* ----------------- RESPONSIVO ----------------- */
+/* Exibição padrão */
+.bannerDesktop {
+  display: block;
+}
 
+.bannerMobile {
+  display: none;
+}
+
+/* ----------------- RESPONSIVO ----------------- */
 @media (max-width: 768px) {
   .mainHeader {
     flex-direction: column;
@@ -155,6 +162,19 @@
 
   .banner {
     max-height: 300px;
+    border-top: 1px solid white; /* LINHA BRANCA APENAS NO MOBILE */
+  }
+
+  /* Mostrar somente o banner mobile */
+  .bannerDesktop {
+    display: none;
+  }
+
+  .bannerMobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
@@ -176,5 +196,9 @@
 
   .navbar a {
     font-size: 16px;
+  }
+
+  .navbar {
+    display: none;
   }
 }

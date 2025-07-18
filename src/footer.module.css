@@ -206,3 +206,11 @@
     font-size: 0.85rem;
   }
 }
+
+@media (max-width: 480px) {
+  /* ... já existentes ... */
+
+  .departamentos {
+    display: none;
+  }
+}

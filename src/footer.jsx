@@ -7,7 +7,7 @@ const Footer = () => {
       <div className={styles.container}>
 
         {/* Coluna 1 - Departamentos */}
-        <div className={styles.coluna}>
+        <div className={`${styles.coluna} ${styles.departamentos}`}>
           <h3>Departamentos</h3>
           <ul>
             <li><a href="#">Início</a></li>

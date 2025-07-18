@@ -1,18 +1,32 @@
+import { useEffect, useState } from 'react';
 import styles from './header.module.css';
 import { FiSearch } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import Banner from './assets/img/allanamakeup.png';
-import Logo from './assets/img/logo.png'; 
+import BannerMobile from './assets/img/allanamobile.png';
+import Logo from './assets/img/logo.png';
 
 const Header = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Função para verificar largura da tela
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Executa uma vez ao carregar
+    window.addEventListener('resize', handleResize); // Atualiza ao redimensionar
+
+    return () => window.removeEventListener('resize', handleResize); // Limpa o listener
+  }, []);
+
   return (
     <header className={styles.headerContainer}>
-      {/* Barra superior com informação de frete grátis */}
       <div className={styles.topBar}>
-        <p>BEM VINDO AO SITE!</p>
+        <p>RUA DA PAZ 53, CENTRAL-BA, BAHIA, 44940-000</p>
       </div>
 
-      {/* Cabeçalho principal com logo, busca e ícone de atendimento */}
       <div className={styles.mainHeader}>
         <div className={styles.logo}>
           <img src={Logo} alt="Logo Mundo Make-up" />
@@ -37,7 +51,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Navegação */}
       <nav className={styles.navbar}>
         <ul>
           <li><a href="#inicio">Início</a></li>
@@ -46,9 +59,12 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Banner principal */}
+      {/* Renderiza apenas UM banner com base no tamanho da tela */}
       <div className={styles.banner}>
-        <img src={Banner} alt="Banner promocional" />
+        <img
+          src={isMobile ? BannerMobile : Banner}
+          alt="Banner promocional"
+        />
       </div>
     </header>
   );
